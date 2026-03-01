@@ -24,4 +24,4 @@ Sistema escolar con persistencia en base de datos H2 usando Spring Boot y JPA.
 4. Acceder a H2 Console: http://localhost:8080/h2-console
 
 ## Video demostrativo
-[Enlace](https://youtu.be/OAoqcHjKiv0)
+[Enlace](https://youtu.be/OAoqcHjKiv0?si=Xc53ECDWVt0v3Zpo)
