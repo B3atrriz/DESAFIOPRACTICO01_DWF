@@ -23,17 +23,27 @@ class MateriaRepositoryTest {
     @Test
     @Commit
     void shouldInsertTwoNewMaterias() {
-        // Given - obtener un profesor existente
-        Profesor profesor = profesorRepository.findById(1L).orElseThrow();
+        // PRIMERO: Crear los profesores
+        Profesor profesor1 = Profesor.builder()
+                .nombre("Profesor Test 1")
+                .build();
 
+        Profesor profesor2 = Profesor.builder()
+                .nombre("Profesor Test 2")
+                .build();
+
+        Profesor savedProfesor1 = profesorRepository.save(profesor1);
+        Profesor savedProfesor2 = profesorRepository.save(profesor2);
+
+        // AHORA SÍ: Crear materias con esos profesores
         Materia materia1 = Materia.builder()
                 .nombre("Física")
-                .profesor(profesor)
+                .profesor(savedProfesor1)  // Usar el profesor guardado
                 .build();
 
         Materia materia2 = Materia.builder()
                 .nombre("Química")
-                .profesor(profesor)
+                .profesor(savedProfesor2)  // Usar el profesor guardado
                 .build();
 
         // When
@@ -45,5 +55,7 @@ class MateriaRepositoryTest {
         assertNotNull(savedMateria2.getId());
         assertEquals("Física", savedMateria1.getNombre());
         assertEquals("Química", savedMateria2.getNombre());
+        assertNotNull(savedMateria1.getProfesor());
+        assertNotNull(savedMateria2.getProfesor());
     }
 }

@@ -38,8 +38,16 @@ class ProfesorRepositoryTest {
         assertNotNull(savedProfesor1.getId());
         assertNotNull(savedProfesor2.getId());
 
+        // Verificar IDs
+        assertTrue(savedProfesor1.getId() > 0);
+        assertTrue(savedProfesor2.getId() > 0);
+
         // Verificar que se guardaron
         List<Profesor> allProfesores = profesorRepository.findAll();
         assertTrue(allProfesores.size() >= 2);
+
+        // Mostrar IDs en consola (para debug)
+        System.out.println("Profesor 1 ID: " + savedProfesor1.getId());
+        System.out.println("Profesor 2 ID: " + savedProfesor2.getId());
     }
 }
