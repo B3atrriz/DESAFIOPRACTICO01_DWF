@@ -1,5 +1,4 @@
 package sv.edu.udb.service.impl;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import sv.edu.udb.repository.ProfesorRepository;
@@ -10,22 +9,12 @@ import java.util.List;
 @Service
 public class ProfesorServiceImpl implements ProfesorService {
     @Autowired
-    private ProfesorRepository profesorRepository;
+    private ProfesorRepository repository;
 
     @Override
-    public List<Profesor> findAll() { return profesorRepository.findAll(); }
-
+    public List<Profesor> findAll() { return repository.findAll(); }
     @Override
-    public Profesor save(Profesor profesor) { return profesorRepository.save(profesor); }
-
+    public Profesor save(Profesor profesor) { return repository.save(profesor); }
     @Override
-    public Profesor update(Long id, Profesor profesor) {
-        return profesorRepository.findById(id).map(p -> {
-            p.setNombre(profesor.getNombre());
-            return profesorRepository.save(p);
-        }).orElse(null);
-    }
-
-    @Override
-    public void delete(Long id) { profesorRepository.deleteById(id); }
+    public void delete(Long id) { repository.deleteById(id); }
 }
