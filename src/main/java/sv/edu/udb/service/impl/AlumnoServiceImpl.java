@@ -13,8 +13,13 @@ public class AlumnoServiceImpl implements AlumnoService {
 
     @Override
     public List<Alumno> findAll() { return repository.findAll(); }
+
+    @Override
+    public Alumno findById(Long id) { return repository.findById(id).orElse(null); } // <-- NUEVO
+
     @Override
     public Alumno save(Alumno alumno) { return repository.save(alumno); }
+
     @Override
     public void delete(Long id) { repository.deleteById(id); }
 }

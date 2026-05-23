@@ -4,6 +4,7 @@ import java.util.List;
 
 public interface ProfesorService {
     List<Profesor> findAll();
+    Profesor findById(Long id); // <-- NUEVO
     Profesor save(Profesor profesor);
     void delete(Long id);
 }
