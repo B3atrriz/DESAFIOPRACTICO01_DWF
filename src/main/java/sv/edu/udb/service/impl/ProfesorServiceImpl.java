@@ -13,8 +13,13 @@ public class ProfesorServiceImpl implements ProfesorService {
 
     @Override
     public List<Profesor> findAll() { return repository.findAll(); }
+
+    @Override
+    public Profesor findById(Long id) { return repository.findById(id).orElse(null); } // <-- NUEVO
+
     @Override
     public Profesor save(Profesor profesor) { return repository.save(profesor); }
+
     @Override
     public void delete(Long id) { repository.deleteById(id); }
 }

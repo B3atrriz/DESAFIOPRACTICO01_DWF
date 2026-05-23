@@ -13,8 +13,13 @@ public class MateriaServiceImpl implements MateriaService {
 
     @Override
     public List<Materia> findAll() { return repository.findAll(); }
+
+    @Override
+    public Materia findById(Long id) { return repository.findById(id).orElse(null); } // <-- NUEVO
+
     @Override
     public Materia save(Materia materia) { return repository.save(materia); }
+
     @Override
     public void delete(Long id) { repository.deleteById(id); }
 }
