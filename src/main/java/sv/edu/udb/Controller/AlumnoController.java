@@ -7,14 +7,23 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/alumnos")
+@CrossOrigin(origins = "*")
 public class AlumnoController {
     @Autowired
     private AlumnoService service;
 
     @GetMapping
     public List<Alumno> getAll() { return service.findAll(); }
+
     @PostMapping
     public Alumno create(@RequestBody Alumno alumno) { return service.save(alumno); }
+
+    @PutMapping("/{id}")
+    public Alumno update(@PathVariable Long id, @RequestBody Alumno alumno) {
+        alumno.setId(id);
+        return service.save(alumno);
+    }
+
     @DeleteMapping("/{id}")
     public void delete(@PathVariable Long id) { service.delete(id); }
 }
