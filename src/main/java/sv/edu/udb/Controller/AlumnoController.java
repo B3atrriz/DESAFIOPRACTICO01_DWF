@@ -6,7 +6,7 @@ import sv.edu.udb.service.AlumnoService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/alumnos")
+@RequestMapping("/api/alumno")
 @CrossOrigin(origins = "*")
 public class AlumnoController {
     @Autowired

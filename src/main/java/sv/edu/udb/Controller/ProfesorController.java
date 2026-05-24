@@ -7,7 +7,7 @@ import sv.edu.udb.service.ProfesorService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/profesores")
+@RequestMapping("/api/profesor")
 @CrossOrigin(origins = "*") // Permite la conexión con el Front-End
 public class ProfesorController {
 

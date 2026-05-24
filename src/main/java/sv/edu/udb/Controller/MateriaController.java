@@ -7,7 +7,7 @@ import sv.edu.udb.service.MateriaService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/materias")
+@RequestMapping("/api/materia")
 @CrossOrigin(origins = "*") // Permite la conexión con el Front-End
 public class MateriaController {
 
