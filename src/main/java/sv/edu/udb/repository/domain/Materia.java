@@ -18,7 +18,8 @@ public class Materia {
     @Column(nullable = false, length = 100)
     private String nombre;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    // CAMBIADO A EAGER para evitar errores de Lazy Initialization al serializar a JSON
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_profesor")
     private Profesor profesor;
 }

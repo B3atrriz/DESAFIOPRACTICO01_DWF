@@ -6,47 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="c6376a98-fd90-47fd-a320-4395043030ca" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/sv/edu/udb/Controller/AlumnoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sv/edu/udb/Controller/AlumnoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/sv/edu/udb/Controller/MateriaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sv/edu/udb/Controller/MateriaController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/sv/edu/udb/Controller/ProfesorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sv/edu/udb/Controller/ProfesorController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/sv/edu/udb/Controller/AlumnoController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/sv/edu/udb/Controller/AuthController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/sv/edu/udb/Controller/MateriaController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/sv/edu/udb/Controller/NotaController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/sv/edu/udb/Controller/ProfesorController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/sv/edu/udb/SpringApiRestApplication.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/sv/edu/udb/repository/AlumnoMateriaRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/sv/edu/udb/repository/AlumnoRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/sv/edu/udb/repository/MateriaRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/sv/edu/udb/repository/NotaRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/sv/edu/udb/repository/ProfesorRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/sv/edu/udb/repository/UsuarioRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/sv/edu/udb/repository/domain/Alumno$AlumnoBuilder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/sv/edu/udb/repository/domain/Alumno.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/sv/edu/udb/repository/domain/AlumnoMateria$AlumnoMateriaBuilder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/sv/edu/udb/repository/domain/AlumnoMateria$AlumnoMateriaId.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/sv/edu/udb/repository/domain/AlumnoMateria.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/sv/edu/udb/repository/domain/Materia$MateriaBuilder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/sv/edu/udb/repository/domain/Materia.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/sv/edu/udb/repository/domain/Nota$NotaBuilder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/sv/edu/udb/repository/domain/Nota.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/sv/edu/udb/repository/domain/Profesor$ProfesorBuilder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/sv/edu/udb/repository/domain/Profesor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/sv/edu/udb/repository/domain/Usuario$UsuarioBuilder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/sv/edu/udb/repository/domain/Usuario.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/sv/edu/udb/security/JwtFilter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/sv/edu/udb/security/JwtUtil.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/sv/edu/udb/security/SecurityConfig.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/sv/edu/udb/service/AlumnoService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/sv/edu/udb/service/MateriaService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/sv/edu/udb/service/NotaService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/sv/edu/udb/service/ProfesorService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/sv/edu/udb/service/impl/AlumnoServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/sv/edu/udb/service/impl/CustomUserDetailsService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/sv/edu/udb/service/impl/MateriaServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/sv/edu/udb/service/impl/NotaServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/sv/edu/udb/service/impl/ProfesorServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/sv/edu/udb/repository/domain/Materia.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sv/edu/udb/repository/domain/Materia.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/sv/edu/udb/security/JwtUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sv/edu/udb/security/JwtUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/sv/edu/udb/security/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sv/edu/udb/security/SecurityConfig.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -160,7 +122,9 @@
       <updated>1776466710416</updated>
       <workItem from="1776466743296" duration="36860000" />
       <workItem from="1779543311238" duration="9279000" />
-      <workItem from="1779587535509" duration="7041000" />
+      <workItem from="1779587535509" duration="8015000" />
+      <workItem from="1779655614371" duration="2982000" />
+      <workItem from="1780119993349" duration="4610000" />
     </task>
     <servers />
   </component>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard - Sistema Escolar</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+
+<script>
+const token = localStorage.getItem("token");
+
+if (!token) {
+    window.location.href = "index.html";
+}
+</script>
+
+<nav class="navbar navbar-dark bg-primary">
+    <div class="container-fluid">
+        <span class="navbar-brand"> Sistema Escolar</span>
+        <button class="btn btn-danger" onclick="logout()">Cerrar Sesión</button>
+    </div>
+</nav>
+
+<div class="container mt-4">
+
+    <div class="row mb-4">
+        <div class="col-md-3">
+            <div class="card text-center shadow">
+                <div class="card-body">
+                    <h5>👨‍🎓 Alumnos</h5>
+                    <h2 id="totalAlumnos">0</h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card text-center shadow">
+                <div class="card-body">
+                    <h5>👨‍🏫 Profesores</h5>
+                    <h2 id="totalProfesores">0</h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card text-center shadow">
+                <div class="card-body">
+                    <h5>📚 Materias</h5>
+                    <h2 id="totalMaterias">0</h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card text-center shadow">
+                <div class="card-body">
+                    <h5>📝 Notas</h5>
+                    <h2 id="totalNotas">0</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card shadow">
+        <div class="card-header bg-dark text-white">
+            Bienvenido al Sistema Escolar
+        </div>
+        <div class="card-body">
+            <p>Desde aquí podrás administrar:</p>
+
+            <div class="list-group">
+                <a href="alumnos.html" class="list-group-item list-group-item-action">
+                    👨‍🎓 Gestión de Alumnos
+                </a>
+
+                <a href="profesores.html" class="list-group-item list-group-item-action">
+                    👨‍🏫 Gestión de Profesores
+                </a>
+
+                <a href="materias.html" class="list-group-item list-group-item-action">
+                    📚 Gestión de Materias
+                </a>
+
+                <a href="notas.html" class="list-group-item list-group-item-action">
+                    📝 Gestión de Notas
+                </a>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+const BASE_URL = "http://localhost:8080/api";
+
+async function cargarResumen() {
+    try {
+        const headers = {
+            "Authorization": `Bearer ${token}`
+        };
+
+        const [alumnos, profesores, materias, notas] = await Promise.all([
+            fetch(`${BASE_URL}/alumno`, { headers }),
+            fetch(`${BASE_URL}/profesor`, { headers }),
+            fetch(`${BASE_URL}/materia`, { headers }),
+            fetch(`${BASE_URL}/notas`, { headers })
+        ]);
+
+        if (alumnos.ok) {
+            const data = await alumnos.json();
+            document.getElementById("totalAlumnos").textContent = data.length;
+        }
+
+        if (profesores.ok) {
+            const data = await profesores.json();
+            document.getElementById("totalProfesores").textContent = data.length;
+        }
+
+        if (materias.ok) {
+            const data = await materias.json();
+            document.getElementById("totalMaterias").textContent = data.length;
+        }
+
+        if (notas.ok) {
+            const data = await notas.json();
+            document.getElementById("totalNotas").textContent = data.length;
+        }
+
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+function logout() {
+    localStorage.removeItem("token");
+    window.location.href = "index.html";
+}
+
+cargarResumen();
+</script>
+
+</body>
+</html>

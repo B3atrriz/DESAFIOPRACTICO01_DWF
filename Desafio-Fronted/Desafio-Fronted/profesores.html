@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gestión de Profesores</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+
+<script>
+const token = localStorage.getItem("token");
+
+if (!token) {
+    window.location.href = "index.html";
+}
+</script>
+
+<nav class="navbar navbar-dark bg-primary">
+    <div class="container-fluid">
+        <span class="navbar-brand">🎓 Gestión de Profesores</span>
+
+        <div>
+            <a href="dashboard.html" class="btn btn-light me-2">
+                Dashboard
+            </a>
+
+            <button class="btn btn-danger" onclick="logout()">
+                Cerrar Sesión
+            </button>
+        </div>
+    </div>
+</nav>
+
+<div class="container mt-4">
+
+    <div class="card shadow">
+        <div class="card-header bg-success text-white fw-bold" id="formTitle">
+            Agregar Profesor
+        </div>
+
+        <div class="card-body">
+
+            <form id="profesorForm">
+
+                <input type="hidden" id="profesorId">
+
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Nombre Completo</label>
+                    <input
+                        type="text"
+                        id="nombreProfesor"
+                        class="form-control"
+                        placeholder="Ej: Firulais Oscar"
+                        required>
+                </div>
+
+                <button
+                    type="submit"
+                    id="btnGuardar"
+                    class="btn btn-success w-100 fw-bold">
+                    Guardar Profesor
+                </button>
+
+                <button
+                    type="button"
+                    id="btnCancelar"
+                    class="btn btn-warning w-100 mt-2 d-none fw-bold"
+                    onclick="cancelarEdicion()">
+                    Cancelar Edición
+                </button>
+
+            </form>
+
+            <div id="mensaje" class="mt-3"></div>
+
+        </div>
+    </div>
+
+    <div class="card shadow mt-4">
+
+        <div class="card-header bg-dark text-white fw-bold">
+            Profesores Registrados
+        </div>
+
+        <div class="card-body">
+
+            <table class="table table-bordered table-hover align-middle">
+
+                <thead class="table-dark">
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre del Profesor</th>
+                        <th class="text-center">Acciones</th>
+                    </tr>
+                </thead>
+
+                <tbody id="tablaProfesores"></tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+const API_URL = "http://localhost:8080/api/profesor";
+
+async function cargarProfesores() {
+
+    try {
+
+        const response = await fetch(API_URL, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        });
+
+        if(!response.ok){
+            throw new Error("Error al obtener profesores");
+        }
+
+        const profesores = await response.json();
+
+        const tabla = document.getElementById("tablaProfesores");
+
+        tabla.innerHTML = "";
+
+        profesores.forEach(profesor => {
+
+            tabla.innerHTML += `
+                <tr>
+                    <td>${profesor.id}</td>
+                    <td><strong>${profesor.nombre}</strong></td>
+
+                    <td class="text-center">
+                        <button
+                            class="btn btn-warning btn-sm fw-bold"
+                            onclick="editarProfesor(${profesor.id}, '${profesor.nombre.replace(/'/g, "\\'")}')">
+                            Editar
+                        </button>
+
+                        <button
+                            class="btn btn-danger btn-sm fw-bold ms-1"
+                            onclick="eliminarProfesor(${profesor.id})">
+                            Eliminar
+                        </button>
+                    </td>
+                </tr>
+            `;
+
+        });
+
+    } catch(error) {
+
+        console.error(error);
+
+    }
+
+}
+
+document.getElementById("profesorForm")
+.addEventListener("submit", async (e) => {
+
+    e.preventDefault();
+
+    const id = document.getElementById("profesorId").value;
+    const nombre = document.getElementById("nombreProfesor").value;
+
+    const metodo = id ? "PUT" : "POST";
+    const url = id ? `${API_URL}/${id}` : API_URL;
+
+    try {
+
+        const response = await fetch(url, {
+
+            method: metodo,
+
+            headers: {
+                "Content-Type":"application/json",
+                "Authorization": `Bearer ${token}`
+            },
+
+            body: JSON.stringify({
+                nombre
+            })
+
+        });
+
+        if(response.ok){
+
+            document.getElementById("mensaje").innerHTML = `
+                <div class="alert alert-success">
+                    Profesor guardado correctamente.
+                </div>
+            `;
+
+            cancelarEdicion();
+            cargarProfesores();
+
+        } else {
+
+            document.getElementById("mensaje").innerHTML = `
+                <div class="alert alert-danger">
+                    Error al guardar profesor.
+                </div>
+            `;
+        }
+
+    } catch(error) {
+
+        console.error(error);
+
+    }
+
+});
+
+function editarProfesor(id, nombre){
+
+    document.getElementById("profesorId").value = id;
+    document.getElementById("nombreProfesor").value = nombre;
+
+    document.getElementById("formTitle").innerText = "Modificar Profesor";
+    document.getElementById("btnGuardar").textContent = "Actualizar Profesor";
+
+    document.getElementById("btnCancelar").classList.remove("d-none");
+}
+
+function cancelarEdicion(){
+
+    document.getElementById("profesorForm").reset();
+
+    document.getElementById("profesorId").value = "";
+    document.getElementById("formTitle").innerText = "Agregar Profesor";
+    document.getElementById("btnGuardar").textContent = "Guardar Profesor";
+
+    document.getElementById("btnCancelar").classList.add("add", "d-none");
+    document.getElementById("btnCancelar").classList.add("d-none");
+}
+
+async function eliminarProfesor(id){
+
+    if(!confirm("¿Desea eliminar este profesor?")){
+        return;
+    }
+
+    try {
+
+        const response = await fetch(
+            `${API_URL}/${id}`,
+            {
+                method: "DELETE",
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            }
+        );
+
+        if(response.ok){
+
+            cargarProfesores();
+
+        } else {
+
+            alert("No se pudo eliminar");
+
+        }
+
+    } catch(error){
+
+        console.error(error);
+
+    }
+
+}
+
+function logout(){
+
+    localStorage.removeItem("token");
+    window.location.href = "index.html";
+
+}
+
+cargarProfesores();
+
+</script>
+
+</body>
+</html>
