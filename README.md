@@ -1,4 +1,4 @@
-# 🎓 Sistema de Gestión Escolar - Proyecto de Cátedra
+# 🎓 Sistema de Gestión Escolar - Desafio Practico
 
 Este es un sistema web multi-plataforma diseñado para la gestión académica de una institución escolar, permitiendo el control de **Alumnos, Materias, Profesores y Calificaciones**.
 
@@ -36,6 +36,6 @@ Asegúrate de tener instalado:
 ---
 
 ## 👤 Desarrollado por:
-* **Estudiante:** Bea 
+* **Estudiante:** Elisabet Beatriz Marroquin Gonzalez MG251360
 * **Institución:** Universidad Don Bosco (UDB)
 * **Carrera:** Tecnico en computación
